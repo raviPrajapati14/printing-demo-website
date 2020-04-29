@@ -27,3 +27,36 @@
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
+
+footer {
+    position: absolute;
+    bottom:0;
+    width: 100%
+}
+
+.main-container{
+    height: calc(100vh - 150px);
+}
+
+.sidebar{
+    list-style: none;
+    padding:0;
+    margin-left: 1em;
+}
+
+.sidebar li{
+    padding: 10px;
+    border-bottom: solid 1px gray;
+}
+.sidebar li:hover{
+    background-color:black;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar li a {
+    display: block;
+    width: 100%;
+    color:gray;
+    text-decoration: none;
+}
