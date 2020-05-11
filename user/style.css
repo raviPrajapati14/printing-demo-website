@@ -29,9 +29,9 @@
 }
 
 footer {
-    position: absolute;
+    position: sticky;
     bottom:0;
-    width: 100%
+    width: 100%;
 }
 
 .main-container{
@@ -60,3 +60,7 @@ footer {
     color:gray;
     text-decoration: none;
 }
+
+html {
+    scroll-behavior: smooth;
+  }

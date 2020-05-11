@@ -1,5 +1,7 @@
 <?php
-include "connection.php"
+session_start();
+include "connection.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -36,32 +38,24 @@ include "connection.php"
             </form>
             </div>
 
-            <?php
-if(isset($_POST["submit"])){
+<?php
+    if(isset($_POST["submit"])){
 
     $username = mysqli_real_escape_string($link,$_POST["username"]);
     $password = mysqli_real_escape_string($link,$_POST["password"]);
     
-    $count=0;
     $res = mysqli_query($link,"select * from user_registration where username='$username' && password='$password' && status='active' ");
-    $count=mysqli_num_rows($res);
     
-    if($count>0)
-    {
+    while($row=mysqli_fetch_array($res)){
+
+        $_SESSION["admin"]=$row["username"];
+        
         ?>
             <script type="text/javascript">
                 window.location="admin_panel.php"
             </script>
         <?php
     }
-    else{
-        ?>
-        <div class="alert alert-danger">
-            Invalid Username and Password
-        </div>
-        <?php
-    }
-
 }
 ?>
 
@@ -73,6 +67,8 @@ if(isset($_POST["submit"])){
 </div>
 </div>
 
+<?php
 
+include "footer.php";
 
-<?php include "footer.php"; ?>
+?>

@@ -6,9 +6,10 @@ include "connection.php"
 <div class="main-container container-fluid row p-0 d-flex">
     <div class="col-lg-2 col-md-2 col-2 p-0 bg-dark">
                     <ul class="sidebar">
-                        <li class="d-flex"><i class="fa fa-home text-white p-1" aria-hidden="true"></i> <a href="#" class="text-white">Home</a> </li>
+                        <li class="d-flex"><i class="fa fa-home text-white p-1" aria-hidden="true"></i> <a href="admin_panel.php" class="text-white">Home</a> </li>
                         <li class="d-flex"><i class="fa fa-users text-white p-1" aria-hidden="true"></i> <a href="#" class="text-white">Users</a> </li>
                         <li class="d-flex"><i class="fa fa-plus text-white p-1" aria-hidden="true"></i> <a href="add_product.php" name="addproduct" class="text-white">Add Product</a> </li>
+                        <li class="d-flex"> <i class="fa fa-sign-out" aria-hidden="true"></i> <a href="logout.php" class="text-white">Logout</a> </li>
                     </ul>
     </div>
 
@@ -56,10 +57,10 @@ include "connection.php"
 
                     if(isset($_POST["submit1"]))
                     {
-                        $fnm=$_FILES["productimage"]["name"];
-                        $dst="./product_image/".$v3.$fnm ;
-                        $dst1="product_image/".$v3.$fnm ;
-                        move_uploaded_file($_FILES["productimage"]["tmp_name"],$dst);
+                        $getImageName=$_FILES["productimage"]["name"];
+                        $imgdst="./product_image/".$v3.$getImageName ;
+                        $dst1="product_image/".$v3.$getImageName ;
+                        move_uploaded_file($_FILES["productimage"]["tmp_name"],$imgdst);
 
                         mysqli_query($link,"insert into add_product values ('','$_POST[productname]','$_POST[productofferprice]','$_POST[productactualprice]','$_POST[productqty]','$dst1','$_POST[productdesc]') ");
 

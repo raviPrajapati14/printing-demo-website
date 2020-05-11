@@ -53,7 +53,10 @@
                 </div>
             </li>
             <li class="nav-item mr-2">
-                <a class="nav-link" href=""> Contact Us </a>
+                <a class="nav-link" href="#contact"> Contact Us </a>
+            </li>
+            <li class="nav-item mr-2">
+                <a href="user_login.php" class="btn btn-primary"> Login </a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
