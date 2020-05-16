@@ -29,7 +29,7 @@
             <li class="nav-item">
                 <a class="nav-link mr-2" href="service.php"> Services </a>
             </li>
-            <li class="nav-item dropdown mr-2">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
                     <a class="dropdown-item" href="product.php">Marriage Invitation Card</a>
@@ -42,7 +42,7 @@
                     <a class="dropdown-item" href="product.php">other</a>
                 </div>
             </li>
-            <li class="nav-item dropdown mr-2">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Printing</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
                     <a class="dropdown-item" href="#">Offset Printing</a>
@@ -52,12 +52,22 @@
                     <a class="dropdown-item" href="#">T-shirt Printing</a>
                 </div>
             </li>
-            <li class="nav-item mr-2">
+            <li class="nav-item">
                 <a class="nav-link" href="#contact"> Contact Us </a>
             </li>
-            <li class="nav-item mr-2">
-                <a href="user_login.php" class="btn btn-primary"> Login </a>
-            </li>
+            <?php 
+            session_start();
+            if(isset($_SESSION['userId'])){
+                echo '<li class="nav-item">
+                        <a href="logout.php" class="btn btn-danger"> Logout </a>
+                    </li>';
+            }
+            else{
+                echo '<li class="nav-item mr-1">
+                        <a href="user_login.php" class="btn btn-success"> Login </a>
+                    </li>';
+            }
+            ?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">

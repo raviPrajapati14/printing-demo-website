@@ -33,12 +33,12 @@ include "connection.php";
                                 <span class="d-flex icon_design"><i class="fa fa-lock pr-3 pt-2 h5" aria-hidden="true"></i> <input type="password" class="form-control" name="password" placeholder="Enter Password"> </span>
                             </div>
                             <div class="p-2">
-                            <span class="d-flex icon_design"><i class="fa fa-user-secret pr-3 pt-2 h5" aria-hidden="true"></i>
-                            <select name="role" class="form-control">
-                                    <option value="user"> User </option>
-                                    <option value="admin"> Admin </option>
-                                </select>
-                            </span>
+                                <span class="d-flex icon_design"><i class="fa fa-user-secret pr-3 pt-2 h5" aria-hidden="true"></i>
+                                    <select name="role" class="form-control">
+                                        <option value="User"> User </option>
+                                        <option value="admin"> Admin </option>
+                                    </select>
+                                </span>
                             </div>
                             <hr class="bg-white">
                             <div class="p-2">
@@ -58,18 +58,18 @@ include "connection.php";
                         $password = $_POST["password"];
                         $role = $_POST["role"];
 
-                            $res = mysqli_query($link, "select * from user_registration");
-
-                        while ($row = mysqli_fetch_array($res)) {
-                            if($username == $row['username'] && $password == $row['password'] && $role == $row['role'] )
+                        $res = mysqli_query($link, "select * from user_registration");
+                        echo "<br>Isset";
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            if ($username == $row['username'] && $password == $row['password'])
                             {
-                        ?> 
-                            <script type="text/javascript">
-                                window.location = "product.php";
-                            </script>  
-                        <?php
+                                    session_start();
+                                    $_SESSION['userId'] = $row['id'];
+                                    $_SESSION['userName'] = $row['username'];
+                                    header("location:product.php");
+                                    //echo "<br>if session";
+                                    //echo $row['username'].$row['password'].$row['role'];
                             }
-
                         }
                     }
                     ?>

@@ -2,6 +2,10 @@
 include "header.php";
 include "connection.php";
 
+//session_start();
+//echo $_SESSION['userId'];
+//echo $_SESSION['userName'];
+
 ?>
 
 <!-- Sidebar -->
@@ -56,12 +60,12 @@ include "connection.php";
 
                                             <div class="row">
                                                 <div class="col-md-6 col-lg-6 border-right">
-                                                        <img style="height:300px; width:auto;" src="../admin/<?php echo $row["product_image"]; ?>" class="img-fluid" alt="<?php echo $row["product_name"]; ?>">
+                                                    <img style="height:300px; width:auto;" src="../admin/<?php echo $row["product_image"]; ?>" class="img-fluid" alt="<?php echo $row["product_name"]; ?>">
                                                 </div>
                                                 <div class="col-md-6 col-lg-6">
-                                                    <h3 class="text-warning"> <?php echo $row["product_name"];?> </h3>
+                                                    <h3 class="text-warning"> <?php echo $row["product_name"]; ?> </h3>
                                                     <hr>
-                                                    <p> <?php echo $row["product_desc"];?> </p>
+                                                    <p> <?php echo $row["product_desc"]; ?> </p>
                                                     <small> <del class="text-danger"> <i class="fas fa-rupee-sign"></i> <?php echo $row["product_actual_price"]; ?> </del> </small>
                                                     <h4> <i class="fas fa-rupee-sign"></i> <?php echo $row["product_offer_price"]; ?> </h4>
                                                     <hr>
@@ -82,7 +86,7 @@ include "connection.php";
                     </div>
                 </div>
 
-            <?php 
+            <?php
             }
             ?>
             <!-- Product list End-->
