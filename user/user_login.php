@@ -27,19 +27,12 @@ include "connection.php";
                     <div class="form-group">
                         <form action="" method="post">
                             <div class="p-2">
-                                <span class="d-flex icon_design"><i class="fa fa-user pr-3 pt-2 h5" aria-hidden="true"></i> <input type="text" class="form-control" name="username" placeholder="Enter User Name"> </span>
+                                <span class="d-flex icon_design"><i class="fa fa-user pr-3 pt-2 h5" aria-hidden="true"></i> <input type="text" class="form-control" name="username" placeholder="Enter User Name" required> </span>
                             </div>
                             <div class="p-2">
-                                <span class="d-flex icon_design"><i class="fa fa-lock pr-3 pt-2 h5" aria-hidden="true"></i> <input type="password" class="form-control" name="password" placeholder="Enter Password"> </span>
+                                <span class="d-flex icon_design"><i class="fa fa-lock pr-3 pt-2 h5" aria-hidden="true"></i> <input type="password" class="form-control" name="password" placeholder="Enter Password" required> </span>
                             </div>
-                            <div class="p-2">
-                                <span class="d-flex icon_design"><i class="fa fa-user-secret pr-3 pt-2 h5" aria-hidden="true"></i>
-                                    <select name="role" class="form-control">
-                                        <option value="User"> User </option>
-                                        <option value="admin"> Admin </option>
-                                    </select>
-                                </span>
-                            </div>
+                           
                             <hr class="bg-white">
                             <div class="p-2">
                                 <input type="submit" class="btn btn-success" name="submit" value="login">
@@ -56,8 +49,30 @@ include "connection.php";
 
                         $username = $_POST["username"];
                         $password = $_POST["password"];
-                        $role = $_POST["role"];
+                        //$role = $_POST["role"];
+    
+                        // echo $username;
+                        // echo $password;
+                        // echo $role;
+                            $res = mysqli_query($link, "select * from user_registration where username='$username' and password='$password'");
+                            //$res = mysqli_query($link, "select * from user_registration");
+    // print_r($res);
 
+
+    
+                            if (mysqli_fetch_assoc($res)) {
+                                $_SESSION["user"] = $username;
+                                // print_r($_SESSION);
+                                header("location:index.php");
+                            
+                            
+                            }
+                            else{
+                                echo "<div class='alert alert-danger text-danger'><i class='fas fa-times-circle'></i>    Invalid Credentials</div>";
+                            }
+
+
+                        /*
                         $res = mysqli_query($link, "select * from user_registration");
                         echo "<br>Isset";
                         while ($row = mysqli_fetch_assoc($res)) {
@@ -71,6 +86,7 @@ include "connection.php";
                                     //echo $row['username'].$row['password'].$row['role'];
                             }
                         }
+                        */
                     }
                     ?>
 

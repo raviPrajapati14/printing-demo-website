@@ -1,6 +1,8 @@
 <?php
 include "header.php";
+include "connection.php";
 ?>
+<!-- validate user isLogin -->
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -39,7 +41,7 @@ include "header.php";
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-6">
                 <img src="images/img.jpg" alt="About Us" class="img-fluid aboutimg"> </img>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
@@ -105,48 +107,48 @@ include "header.php";
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/g1.png" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Wedding Invitation Card</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Wedding Invitation Card</h6></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/g2.png" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Invitation Card</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Invitation Card</h6></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/bcard.jpg" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Business Card</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Business Card</h6></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/g4.png" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Bill-Book</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Bill Book</h6></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/g5.png" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Pemphlet</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Pemphlet</h6></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="card m-1">
                     <img src="images/g6.png" class="img-fluid" alt="kankotri" style="height:300px">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">latterpad</h6>
+                    <div class="card-body py-2">
+                        <div class="bg-warning rounded"><h6 class="p-2 card-title text-center">Latterpad</h6></div>
                     </div>
                 </div>
             </div>
@@ -154,6 +156,7 @@ include "header.php";
     </div>
 </section>
 
+<!--
 <section class="my-5">
     <div class="py-5">
         <h3 class="text-center">Contact Us</h3>
@@ -197,47 +200,75 @@ include "header.php";
     </div>
 </section>
 
+-->
+
 <section class="my-5">
-    <div class="container-fluid">
+    <div class="container-fluid py-5">
         <div class="row">
             <div class="col-lg-8 col-md-8 col-12">
                 <h3 class="text-center "> GET IN TOUCH </h3>
                 <hr style="width:200px; background:orange; align:left">
-                <form action="mainpage.php" class="was-validated p-2">
+                <form action="index.php" method="POST" class="was-validated p-2" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="uname">Username</label>
-                        <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Name" name="txtName" required>  
                     </div>
                     <div class="form-group">
-                        <label for="pwd">Email</label>
-                        <input type="password" class="form-control" id="email" placeholder="Enter Emain" name="email" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Enter Email Id" name="txtEmail" required>  
                     </div>
                     <div class="form-group">
-                        <label for="pwd">Contact No.</label>
-                        <input type="password" class="form-control" id="email" placeholder="Enter Emain" name="email" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                        <label>Contact No.</label>
+                        <input type="text" class="form-control" placeholder="Enter Contact No" name="txtContact" required>  
                     </div>
                     <div class="form-group">
-                        <label for="pwd">Comment</label>
-                        <textarea name="comment" id="comment" class="form-control"></textarea>
+                        <label>Message</label>
+                        <textarea name="message" class="form-control" required></textarea>
                     </div>
-                    <div class="form-group form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember" required> I agree on blabla.
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Check this checkbox to continue.</div>
-                        </label>
-                    </div>
-                    <input type="file" name="upload" id="" class="form-group form-control bg-secondary p-2 text-white"><br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="file" name="my_file" class="form-group form-control bg-secondary p-2 text-white"><br>
+                    <button type="submit" name="submit1" class="btn btn-primary">Submit</button>
                 </form>
 
             </div>
+
+
+<!-- CONTACT US PHP SCRIPT -->
+<?php
+
+if (isset($_POST["submit1"])) {
+   
+    if (($_FILES['my_file']['name']!="")){
+        // Where the file is going to be stored
+         $target_dir = "./contact_us_files/";
+         $file = $_FILES['my_file']['name'];
+         $path = pathinfo($file);
+         $filename = $path['filename'];
+         $ext = $path['extension'];
+         $temp_name = $_FILES['my_file']['tmp_name'];
+         $path_filename_ext = $target_dir.$filename.".".$ext;
+        // Check if file already exists
+        if (file_exists($path_filename_ext)) {
+            echo "<script>alert('Already Exist')</script>";
+         }else{
+            move_uploaded_file($temp_name,$path_filename_ext);
+            echo "<script>alert('Successfully added')</script>";
+         }
+        }
+
+//    echo "<script>alert('Data insert Successfully')</script>"
+/*
+        $getFileName = $_FILES["file"]["name"];
+        $filedst = "./contact_us_files/" . $filename3 . $getFileName;
+        $dst1 = "contact_us_files/" . $filename3 . $getFileName;
+        move_uploaded_file($_FILES["file"]["tmp_name"], $filedst); 
+*/
+        mysqli_query($link, "insert into contact_us values('','$_POST[txtName]','$_POST[txtEmail]','$_POST[txtContact]','$_POST[message]','$path_filename_ext')");
+
+}
+
+?>
+
+
 
             <div class="col-lg-4 col-md-4 col-12 p-2" id="contact">
                 <h3 class="text-center "> CONTACT DETAILS </h3>

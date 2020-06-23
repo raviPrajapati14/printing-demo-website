@@ -28,23 +28,23 @@ include "connection.php";
                 <form action="" method="post">
                     <div class="form-group">
                         <label class="text-primary"> First Name</label>
-                        <input class="form-control" type="text" placeholder="Enter First Name" name="fName">
+                        <input class="form-control" type="text" placeholder="Enter First Name" name="fName" required>
                     </div>
                     <div class="form-group">
                         <label class="text-primary"> Last Name</label>
-                        <input class="form-control" type="text" placeholder="Enter Last Name" name="lName">
+                        <input class="form-control" type="text" placeholder="Enter Last Name" name="lName" required>
                     </div>
                     <div class="form-group">
                         <label class="text-primary"> Username</label>
-                        <input class="form-control" type="text" placeholder="Enter Username" name="usrName">
+                        <input class="form-control" type="text" placeholder="Enter Username" name="usrName" required>
                     </div>
                     <div class="form-group">
                         <label class="text-primary"> Password</label>
-                        <input class="form-control" type="Password" placeholder="Enter Password" name="password">
+                        <input class="form-control" type="Password" placeholder="Enter Password" name="password" required>
                     </div>
                     <div class="form-group">
                         <label class="text-primary"> Role</label>
-                        <select name="role" class="form-control"> 
+                        <select name="role" class="form-control" > 
                             <option value="User"> USER </option>
                         </select>
                     </div>
@@ -67,8 +67,15 @@ include "connection.php";
                 </div>
 
                 <?php
+
                 if (isset($_POST["submit1"])) {
-                   mysqli_query($link,"insert into user_registration values ('','$_POST[fName]','$_POST[lName]','$_POST[usrName]','$_POST[password]','$_POST[role]','$_POST[status]')");
+                   
+                    //$usrname =$_POST['usrName'];
+                    //$res=mysqli_query($link,"select * from user_registration");
+
+                    $query = "insert into user_registration VALUES ('','$_POST[fName]','$_POST[lName]','$_POST[usrName]','$_POST[password]','$_POST[role]','$_POST[status]')";
+                    mysqli_query($link,$query);
+
                 }  
                 ?>
 

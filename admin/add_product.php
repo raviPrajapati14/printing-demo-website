@@ -2,6 +2,14 @@
 include "header.php";
 include "connection.php";
 session_start();
+
+if(!isset($_SESSION["admin"]))
+{   
+    header("location:admin_login.php");
+}
+/*
+session_start();
+
 if ($_SESSION["admin"] == "") {
 ?>
     <script type="text/javascript">
@@ -9,7 +17,7 @@ if ($_SESSION["admin"] == "") {
     </script>
 <?php
 }
-
+*/
 ?>
 
 <div class="main-container container-fluid row p-0 d-flex">
@@ -71,8 +79,7 @@ if ($_SESSION["admin"] == "") {
                         $dst1="product_image/".$v3.$getImageName ;
                         move_uploaded_file($_FILES["productimage"]["tmp_name"],$imgdst);
 
-                        mysqli_query($link,"insert into add_product values ('','$_POST[productname]','$_POST[productofferprice]','$_POST[productactualprice]','$_POST[productqty]','$dst1','$_POST[productdesc]') ");
-
+                        mysqli_query($link,"insert into add_product values('','$_POST[productname]','$_POST[productofferprice]','$_POST[productactualprice]','$_POST[productqty]','$dst1','$_POST[productdesc]',100)");
                     }
 
                     ?>
