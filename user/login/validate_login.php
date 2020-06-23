@@ -16,7 +16,7 @@ else if(empty($_POST['Password']))
 {
     $data=array("Validation"=>FALSE,"PassErro"=>"Password is Required");
 }
-elseif(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/',$_POST['Password'])) {
+elseif(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,16}$/',$_POST['Password'])) {
         $data=array("Validation"=>FALSE,"PassErro"=>"the password does not meet the requirements!");
  }
  else{

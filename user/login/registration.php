@@ -16,7 +16,7 @@ include 'header.php';
     
 <!-- <form > -->
 <span id='formMsg'></span>
-<div class="h1 text-center" >Registration </div>
+<div class="h1 text-center text-primary" >Registration </div>
   <div class="form-group">
 
   
@@ -40,10 +40,10 @@ include 'header.php';
     <span id='passMsg'></span>
   </div>
 
-  <button id="loginuser"  class="btn btn-primary">Register</button>
+  <button id="loginuser"  class="btn-block btn btn-primary">Register</button>
 <!-- </form>   -->
-<!-- </form>   --><br>
-<a href="login.php" id="loginuser"  class="btn btn-link">Login</a>
+<!-- </form>   -->
+<a href="login.php" id="loginuser"  class="btn btn-link">Already user?</a>
   </div>
 </div>
 </div>

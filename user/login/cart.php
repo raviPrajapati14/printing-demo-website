@@ -9,7 +9,29 @@ include 'header.php';
 // //   header('location:../index.php');
 // }
 
-if (isset($_SESSION['user'])) {
+if(!(isset($_SESSION['user'])))
+{
+
+
+?>
+
+<div class="container-fluid justify-content-center my-5">
+  <div class="card border m-auto w-50 p-5 text-center">
+    <div class="card-body">
+    <i class="fa fa-shopping-bag text-primary" aria-hidden="true" style="font-size:200px"></i>
+    </div>
+    <div class="display-4">
+      Missing Cart Items?
+    </div>
+    <div class="pt-5">
+      <a href="login.php" class="btn btn-primary h5"> Login </a>
+    </div>
+  </div>
+</div>
+<?php
+}
+else {
+  // echo "rfgjirfr";
   $qry = "select id from user_registration where username='" . $_SESSION['user'] . "'";
   $result = mysqli_query($link, $qry);
   //print_r($result);
@@ -29,16 +51,12 @@ if (isset($_SESSION['user'])) {
 ?>
   <style>
     .pass-icon {
-      position: absolute;
-      top: 0.40rem;
-      right: 20px;
-      font-size: 20px;
-      /* pointer-events: none; */
-      cursor: pointer;
-    }
-
-    .border {
-      /* border:0px solid red!important; */
+    position: absolute;
+    top: -14px;
+    right: -5px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fe4a4a;
     }
   </style>
 
@@ -80,15 +98,15 @@ if (isset($_SESSION['user'])) {
                   <img src="../../admin/<?php echo $row["product_image"]; ?>" alt="images" height="200px" width="200px" class="img-fluid ">
                 </div>
                 <div class="col-6 ">
-                  <div>
+                  <div class="h4">
                     <?php echo $row['product_name']; ?>
                   </div>
                   <small>
                     <?php echo $row['product_desc']; ?>
                   </small>
                   <br>
-                  <small><s>Actual Price : <?php echo $row['product_actual_price']; ?> </s></small>
-                  <div class="pt-2">Price per 100 ps : <?php echo $row['product_offer_price']; ?> </div>
+                  <small class="text-danger"><s>Actual Price : <?php echo $row['product_actual_price']; ?> </s></small>
+                  <div class="pt-2">Price per 100 ps : <i class="fas fa-rupee-sign"></i> <span class="h4"> <?php echo $row['product_offer_price']; ?> /- </span> </div>
                 </div>
                 <div class="col-3 " style="position:relative;">
                   <span class="pass-icon remove" data-target="" data-id="<?php echo $userCartId[$index]; ?>"><i class="fas fa-times"></i></span>
@@ -108,7 +126,53 @@ if (isset($_SESSION['user'])) {
             $index++;
           }
         }
-      }
+
+?>
+
+
+
+</div>
+
+<div class="m-2 col-xl-3 card p-3">
+  <div class="h3 text-center">
+    Cart Details
+  </div>
+  <hr style=" background: radial-gradient(blue, darkblue); height: 4px; border-radius: 20px;">
+  <!-- <div class="mb-2  " style="width: 90%;    background: radial-gradient(#3F51B5, #0b154c);    height: 4px;    border-radius: 20px;"></div> -->
+  <div class="border p-3">
+
+    <div class="row">
+      <div class="col-6">
+        Items
+      </div>
+      <div class="col-5">
+        <?php echo $cartCount; ?>
+      </div>
+    </div>
+    <div class="row  ">
+      <div class="col-6">
+        Amount Payable
+      </div>
+      <div class="col-5">
+        <i class='fas fa-rupee-sign'></i>
+        <?php echo $cartPrice; ?>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="d-block m-2 bg-primary text-white btn btn-block">Checkout</button>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+        <?php 
+        
+              }
 
 
 
@@ -119,45 +183,6 @@ if (isset($_SESSION['user'])) {
 
 
 
-
-      </div>
-
-      <div class="m-2 col-xl-3 card p-3">
-        <div class="h3 text-center">
-          Cart Details
-        </div>
-        <hr style=" background: radial-gradient(blue, darkblue); height: 4px; border-radius: 20px;">
-        <!-- <div class="mb-2  " style="width: 90%;    background: radial-gradient(#3F51B5, #0b154c);    height: 4px;    border-radius: 20px;"></div> -->
-        <div class="border p-3">
-
-          <div class="row">
-            <div class="col-6">
-              Items
-            </div>
-            <div class="col-5">
-              <?php echo $cartCount; ?>
-            </div>
-          </div>
-          <div class="row  ">
-            <div class="col-6">
-              Amount Payable
-            </div>
-            <div class="col-5">
-              <i class='fas fa-rupee-sign'></i>
-              <?php echo $cartPrice; ?>
-            </div>
-          </div>
-
-          <div class="row">
-            <button class="d-block m-2 bg-primary text-white btn btn-block">Checkout</button>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
   <?php
 
   include 'footer.php';

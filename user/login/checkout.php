@@ -11,7 +11,7 @@ include 'header.php';
             <div class="card-body ">
                 <!-- <form > -->
                 <span id='formMsg'></span>
-                <div class="h1 text-center text-danger"> <i class="fa fa-shopping-cart text-warning" aria-hidden="true"></i> Checkout </div>
+                <div class="h1 text-center text-primary"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout </div>
                 <hr style="background:silver; width:300px;">
                 <h5 class="text-primary"> <i class="fa fa-user-circle" aria-hidden="true"></i> Personal Details </h5>
                 <hr style=" background: radial-gradient(blue, darkblue); height: 4px; border-radius: 20px;">
@@ -70,15 +70,14 @@ include 'header.php';
                 </div>
                 <button id="loginuser" class="btn btn-primary">Place Order</button>
                 <!-- </form>   -->
-                <!-- </form>   --><br>
-                <a href="login.php" id="loginuser" class="btn btn-link">Login</a>
+
             </div>
         </div>
     
     
     
         <div class="col-3 card p-3 m-2 my-5">
-        <div class="h3 text-center">
+        <div class="h3 text-center text-primary">
             Cart Details
         </div>
         <hr style=" background: radial-gradient(blue, darkblue); height: 4px; border-radius: 20px;">
